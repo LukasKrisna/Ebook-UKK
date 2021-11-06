@@ -9,7 +9,7 @@ class Ebook extends Model
 {
     use HasFactory;
 
-    protected $table = 'ebook_ukk';
+    protected $table = 'ebooks';
     protected $primaryKey = 'id';
     protected $fillable = ['judul', 'pengarang', 'penerbit', 'deskripsi', 'persediaan', 'gambar'];
 }

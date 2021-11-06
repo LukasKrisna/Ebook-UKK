@@ -79,9 +79,11 @@
         <div class="image">
           <img src="assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
+        @auth
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">{{ auth()->user()->username }}</a>
         </div>
+        @endauth
       </div>
 
       
@@ -97,7 +99,12 @@
                 Buku
               </p>
             </a>
-            
+            <a href="{{ url('/logout') }}" class="nav-link">
+              <i class="nav-icon far fa-circle text-danger"></i>
+              <p>
+                Logout
+              </p>
+            </a>
           </li>
           
         </ul>
@@ -198,39 +205,39 @@
 
             <!-- TABLE: LATEST ORDERS -->
             <div class="card">
-              <div class="card-header border-transparent">
-                <h3 class="card-title">Latest Orders</h3>
-              </div>
+              
               <!-- /.card-header -->
               <div class="card-body p-0">
                 <div class="table-responsive">
                   <table class="table m-0">
                     <thead>
                     <tr>
-                      <th>Order ID</th>
-                      <th>Item</th>
-                      <th>Gambar</th>
-                      <th>Popularity</th>
+                      <th>ID</th>
+                      <th>Judul Buku</th>
+                      <th>Gambar Buku</th>
+                      <th>Jumlah Persediaan</th>
                       <th></th>
                     </tr>
                     </thead>
                     <tbody>
+                    @foreach ($ebooks as $e)
                     <tr>
-                      <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                      <td>Samsung Smart TV</td>
+                      <td><a href="pages/examples/invoice.html">{{ $e->id }}</a></td>
+                      <td>{{ $e->judul }}</td>
                       <td><img src="assets/dist/img/avatar2.png" alt="gambar-buku"></td>
                       <td>
-                        <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                        <div class="sparkbar" data-color="#f39c12" data-height="20">{{ $e->persediaan }}</div>
                       </td>
                       <td>
                         <div class="btn-group btn-group-sm">
-                            <button type="button" class="btn btn-info"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                            {{-- <a href="#" class="btn btn-info"><i class="fas fa-edit"></i></a> --}}
-                            {{-- <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a> --}}
+                            {{-- <button type="button" class="btn btn-info"><i class="fas fa-edit"></i></button> --}}
+                            {{-- <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button> --}}
+                            <a href="{{ url('/form_edit/' . $e->id) }}" class="btn btn-info"><i class="fas fa-edit"></i></a>
+                            <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                         </div>
                       </td>
                     </tr>
+                    @endforeach
                     </tbody>
                   </table>
                 </div>
@@ -238,7 +245,7 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer clearfix">
-                <a href="{{ url('/form') }}" class="btn btn-sm btn-info float-left">Place New Order</a>
+                <a href="{{ url('/form') }}" class="btn btn-sm btn-info float-left">Tambah Buku</a>
               </div>
               <!-- /.card-footer -->
             </div>

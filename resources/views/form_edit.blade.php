@@ -15,32 +15,32 @@
 <body>
   <div class="card card-primary">
     <div class="card-header">
-      <h3 class="card-title">Tambah Buku</h3>
+      <h3 class="card-title">Edit Buku</h3>
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form action="{{ url('dashboard') }}" method="post">
+    <form action="{{ url('dashboard/' .$ebooks->id) }}" method="post">
       {!! csrf_field() !!}
       <div class="card-body">
         <div class="form-group">
           <label for="exampleInputEmail1">Judul</label>
-          <input type="text" class="form-control" name="judul" placeholder="Masukkan Judul">
+          <input type="text" class="form-control" name="judul" value="{{ $ebooks->judul }}" placeholder="Masukkan Judul">
         </div>
         <div class="form-group">
           <label for="exampleInputEmail1">Pengarang</label>
-          <input type="text" class="form-control" name="pengarang" placeholder="Enter email">
+          <input type="text" class="form-control" name="pengarang" value="{{ $ebooks->pengarang }}" placeholder="Enter email">
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Penerbit</label>
-          <input type="text" class="form-control" name="penerbit" placeholder="Password">
+          <input type="text" class="form-control" name="penerbit" value="{{ $ebooks->penerbit }}" placeholder="Password">
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Deskripsi</label>
-          <input type="text" class="form-control" name="deskripsi" placeholder="Password">
+          <input type="text" class="form-control" name="deskripsi" value="{{ $ebooks->deskripsi }}" placeholder="Password">
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Persediaan</label>
-          <input type="number" class="form-control" name="persediaan" placeholder="Password">
+          <input type="number" class="form-control" name="persediaan" value="{{ $ebooks->persediaan }}" placeholder="Password">
         </div>
         <div class="form-group">
           <label for="exampleInputFile">Gambar Buku</label>
