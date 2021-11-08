@@ -36,7 +36,27 @@ class EbookController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
+        $input = $request->validate([
+            'judul'         => 'required|max:150',
+            'pengarang'     => 'required|max:100',
+            'penerbit'      => 'required|max:100',
+            'deskripsi'     => 'required',
+            'persediaan'    => 'required|max:11',
+            'gambar'        => 'image|file|max:5024'
+        ]);
+
+        if ($request->file('gambar')) {
+            $input['gambar'] = $request->file('gambar')->store('cover-buku');
+
+            // $request->file('image')->move(public_path('img/products/'), $request->file('image')->getClientOriginalName());
+            // $input['gambar'] = 'img/products/' . $request->file('image')->getClientOriginalName();
+
+            // $file = $request->File('img');
+            // $ext  = $user->username . "." . $file->clientExtension();
+            // $file->storeAs('images/', $ext);
+            // $user->image_name = $ext;
+        }
+
         Ebook::create($input);
         return redirect('dashboard');
     }
@@ -78,7 +98,20 @@ class EbookController extends Controller
     public function update(Request $request, $id)
     {
         $ebooks = Ebook::find($id);
-        $input = $request->all();
+        // $input = $request->all();
+        $input = $request->validate([
+            'judul'         => 'required|max:150',
+            'pengarang'     => 'required|max:100',
+            'penerbit'      => 'required|max:100',
+            'deskripsi'     => 'required',
+            'persediaan'    => 'required|max:11',
+            'gambar'        => 'image|file|max:5024'
+        ]);
+
+        if ($request->file('gambar')) {
+            $input['gambar'] = $request->file('gambar')->store('cover-buku');
+        }
+
         $ebooks->update($input);
         return redirect('dashboard');
     }

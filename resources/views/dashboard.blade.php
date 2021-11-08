@@ -224,7 +224,7 @@
                     <tr>
                       <td><a href="{{ url('detail/'.$e->id) }}">{{ $e->id }}</a></td>
                       <td>{{ $e->judul }}</td>
-                      <td><img src="assets/dist/img/avatar2.png" alt="gambar-buku"></td>
+                      <td><img src="{{ asset('storage/'.$e->gambar) }}" alt="gambar-cover-buku" width="150"></td>
                       <td>
                         <div class="sparkbar" data-color="#f39c12" data-height="20">{{ $e->persediaan }}</div>
                       </td>

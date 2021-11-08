@@ -19,7 +19,7 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form action="{{ url('dashboard/'.$ebooks->id) }}" method="post">
+    <form action="{{ url('dashboard/'.$ebooks->id) }}" method="post" enctype="multipart/form-data">
       @method('put')
       {!! csrf_field() !!}
       <div class="card-body">
@@ -37,19 +37,16 @@
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Deskripsi</label>
-          <textarea class="form-control" name="deskripsi" value="{{ $ebooks->deskripsi }}" cols="20" rows="3"></textarea>
+          <textarea class="form-control" name="deskripsi"  cols="20" rows="3" value="{{ $ebooks->deskripsi }}"></textarea>
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Persediaan</label>
           <input type="number" class="form-control" name="persediaan" value="{{ $ebooks->persediaan }}" placeholder="Password">
         </div>
         <div class="form-group">
-          <label for="exampleInputFile">Gambar Buku</label>
-          <div class="input-group">
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" name="gambar">
-              <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-            </div>
+          <div class="custom-file">
+            <label for="gambar" class="form-label">Upload Image</label>
+            <input class="form-control" type="file" id="gambar" name="gambar">
           </div>
         </div>
       </div>

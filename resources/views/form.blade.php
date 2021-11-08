@@ -19,7 +19,7 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form action="{{ url('dashboard') }}" method="post">
+    <form action="{{ url('dashboard') }}" method="post" enctype="multipart/form-data">
       {!! csrf_field() !!}
       <div class="card-body">
         <div class="form-group">
@@ -43,13 +43,12 @@
           <input type="number" class="form-control" name="persediaan" placeholder="Password">
         </div>
         <div class="form-group">
-          <label for="exampleInputFile">Gambar Buku</label>
-          <div class="input-group">
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" name="gambar">
-              <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-            </div>
+          <div class="custom-file">
+            <label for="gambar" class="form-label">Upload Image</label>
+            <input class="form-control" type="file" id="gambar" name="gambar">
           </div>
+        </div>
+        </div>
         </div>
       </div>
       <!-- /.card-body -->
