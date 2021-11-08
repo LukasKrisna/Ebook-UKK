@@ -19,7 +19,8 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form action="{{ url('dashboard/' .$ebooks->id) }}" method="post">
+    <form action="{{ url('dashboard/'.$ebooks->id) }}" method="post">
+      @method('put')
       {!! csrf_field() !!}
       <div class="card-body">
         <div class="form-group">
@@ -36,7 +37,7 @@
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Deskripsi</label>
-          <input type="text" class="form-control" name="deskripsi" value="{{ $ebooks->deskripsi }}" placeholder="Password">
+          <textarea class="form-control" name="deskripsi" value="{{ $ebooks->deskripsi }}" cols="20" rows="3"></textarea>
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Persediaan</label>

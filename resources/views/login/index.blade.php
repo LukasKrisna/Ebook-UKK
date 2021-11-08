@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Log in</title>
+  <title>Ebook</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -17,7 +17,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="assets/index2.html"><b>Admin</b>LTE</a>
+    <a href="#"><b>Ebook</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -29,7 +29,7 @@
         <div class="input-group mb-3">
           <input type="text" name="username" class="form-control @error('username')
               is-invalid
-          @enderror" placeholder="username">
+          @enderror" placeholder="Username">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>

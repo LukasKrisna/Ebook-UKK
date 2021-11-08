@@ -38,7 +38,7 @@ class EbookController extends Controller
     {
         $input = $request->all();
         Ebook::create($input);
-        return redirect('dashboard')->with('flash_message', 'Buku berhasi ditambah!');
+        return redirect('dashboard');
     }
 
     /**
@@ -49,8 +49,11 @@ class EbookController extends Controller
      */
     public function show($id)
     {
-        $ebooks = Ebook::find($id);
-        return view('contacts.show')->with('ebooks', $ebooks);
+        $ebook = Ebook::find($id);
+        // return $ebook;
+        // $ebooks = Ebook::findOrFail($id);
+
+        return view('detail', compact('ebook'));
     }
 
     /**
@@ -61,8 +64,8 @@ class EbookController extends Controller
      */
     public function edit($id)
     {
-        // $ebooks = Ebook::find($id);
-        // return view('contacts.show')->with('ebooks', $ebooks);
+        $ebooks = Ebook::find($id);
+        return view('form_edit', compact('ebooks'));
     }
 
     /**
@@ -77,7 +80,7 @@ class EbookController extends Controller
         $ebooks = Ebook::find($id);
         $input = $request->all();
         $ebooks->update($input);
-        return redirect('dashboard')->with('flash_message', 'Berhasil mengupdate!');
+        return redirect('dashboard');
     }
 
     /**
@@ -89,6 +92,7 @@ class EbookController extends Controller
     public function destroy($id)
     {
         Ebook::destroy($id);
-        return redirect('dashboard')->with('flash_message', 'Berhasil menghapus!');
+        // Ebook::table('ebooks')->where('id', $id)->delete();
+        return redirect('dashboard');
     }
 }

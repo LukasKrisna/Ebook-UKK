@@ -25,11 +25,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/form', function () {
     return view('form');
 });
-Route::resource('/dashboard', EbookController::class);
+Route::resource('/dashboard', EbookController::class)->middleware('auth');
+Route::get('/detail/{id}', [EbookController::class, 'show']);
+Route::get('/form_edit/{id}', [EbookController::class, 'edit']);
+Route::put('/form_edit/{id}', [EbookController::class, 'update']);
+Route::delete('/dashboard', [EbookController::class, 'destroy']);
 
-Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'store']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
-Route::get('/register', [RegisterController::class, 'index']);
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);

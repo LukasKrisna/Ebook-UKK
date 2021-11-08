@@ -212,7 +212,7 @@
                   <table class="table m-0">
                     <thead>
                     <tr>
-                      <th>ID</th>
+                      <th>NO</th>
                       <th>Judul Buku</th>
                       <th>Gambar Buku</th>
                       <th>Jumlah Persediaan</th>
@@ -222,7 +222,7 @@
                     <tbody>
                     @foreach ($ebooks as $e)
                     <tr>
-                      <td><a href="pages/examples/invoice.html">{{ $e->id }}</a></td>
+                      <td><a href="{{ url('detail/'.$e->id) }}">{{ $e->id }}</a></td>
                       <td>{{ $e->judul }}</td>
                       <td><img src="assets/dist/img/avatar2.png" alt="gambar-buku"></td>
                       <td>
@@ -232,8 +232,20 @@
                         <div class="btn-group btn-group-sm">
                             {{-- <button type="button" class="btn btn-info"><i class="fas fa-edit"></i></button> --}}
                             {{-- <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button> --}}
-                            <a href="{{ url('/form_edit/' . $e->id) }}" class="btn btn-info"><i class="fas fa-edit"></i></a>
-                            <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                          <form action="{{ url('/form_edit' . '/' . $e->id) }}" method="post">
+                            @method('get')
+                            @csrf
+                            <button class="btn btn-info">
+                              <i class="fas fa-edit"></i>
+                            </button>
+                          </form>
+                          <form action="{{ url('/dashboard' . '/' . $e->id) }}" method="post">
+                            @method('delete')
+                            @csrf
+                            <button class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus?')">
+                              <i class="fa fa-trash"></i>
+                            </button>
+                          </form>
                         </div>
                       </td>
                     </tr>
