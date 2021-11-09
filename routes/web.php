@@ -3,6 +3,7 @@
 use App\Http\Controllers\EbookController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,10 +27,11 @@ Route::get('/form', function () {
     return view('form');
 });
 Route::resource('/dashboard', EbookController::class)->middleware('auth');
-Route::get('/detail/{id}', [EbookController::class, 'show']);
-Route::get('/form_edit/{id}', [EbookController::class, 'edit']);
-Route::put('/form_edit/{id}', [EbookController::class, 'update']);
-Route::delete('/dashboard', [EbookController::class, 'destroy']);
+Route::get('/detail/{id}', [EbookController::class, 'show'])->middleware('auth');
+Route::get('/form_edit/{id}', [EbookController::class, 'edit'])->middleware('auth');
+Route::put('/form_edit/{id}', [EbookController::class, 'update'])->middleware('auth');
+Route::delete('/dashboard', [EbookController::class, 'destroy'])->middleware('auth');
+
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'store']);

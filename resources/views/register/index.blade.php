@@ -17,7 +17,7 @@
 <body class="hold-transition register-page">
 <div class="register-box">
   <div class="register-logo">
-    <a href="assets/index2.html"><b>Admin</b>LTE</a>
+    <a href="#"><b>Ebook</b></a>
   </div>
 
   <div class="card">

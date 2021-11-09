@@ -14,8 +14,16 @@ class EbookController extends Controller
      */
     public function index()
     {
-        $ebooks = Ebook::all();
+        $ebooks = Ebook::simplePaginate(3);
         return view('dashboard')->with('ebooks', $ebooks);
+
+        // $ebooks = Ebook::all();
+        // $search = Ebook::latest();
+
+        // if (request('search')) {
+        //     $ebooks->where('judul', 'like', '%' . request('search') . '%');
+        // }
+        // $ebooks = Ebook::all()->simplePaginate(3);
     }
 
     /**
